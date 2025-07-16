@@ -1,0 +1,19 @@
+{
+  "name": "nathancdk-nodejs-cdk",
+  "version": "0.1.0",
+  "bin": {
+    "nathancdk-cdk": "bin/nathancdk.js"
+  },
+  "scripts": {
+    "build": "echo 'Using JavaScript, no build step required'",
+    "watch": "cdk watch",
+    "cdk": "cdk"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.151.0",
+    "constructs": "^10.3.0"
+  }
+}
