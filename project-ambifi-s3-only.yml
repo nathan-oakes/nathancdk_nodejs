@@ -1,0 +1,8 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Simple template to create an S3 bucket named project-ambifi-bucket
+
+Resources:
+  ProjectAmbifiBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: project-ambifi-bucket
