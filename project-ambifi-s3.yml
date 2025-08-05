@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Create an S3 bucket named project-ambifi-bucket and a project IAM managed policy that grants list/get access to it
+Description: Create an S3 bucket named project-ambifi-bucket, a project IAM managed policy, and an IAM role for accessing that bucket
 
 Resources:
 
@@ -31,3 +31,19 @@ Resources:
             Resource:
               - !Sub arn:${AWS::Partition}:s3:::project-ambifi-bucket
               - !Sub arn:${AWS::Partition}:s3:::project-ambifi-bucket/*
+
+  ProjectAmbifiS3AccessRole:
+    Type: AWS::IAM::Role
+    Properties:
+      Path: /project/
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      ManagedPolicyArns:
+        - !Ref rS3Policy
